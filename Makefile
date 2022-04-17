@@ -1,5 +1,8 @@
 SUBDIRS=systemd
 
+DESTDIR=/usr/local
+BINDIR=$(DESTDIR)/bin
+
 all: $(SUBDIRS)
 
 $(SUBDIRS):
