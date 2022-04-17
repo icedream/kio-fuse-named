@@ -1,0 +1,12 @@
+[Unit]
+Description=kio-fuse-named %i
+After=dbus.service dbus.socket network-online.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=__BINDIR__/__KIO_FUSE_NAMED_SCRIPT_NAME__ mount %i
+ExecStop=__BINDIR__/__KIO_FUSE_NAMED_SCRIPT_NAME__ unmount %i
+
+[Install]
+WantedBy=default.target
