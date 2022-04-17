@@ -3,10 +3,15 @@ SUBDIRS=systemd
 DESTDIR=/usr/local
 BINDIR=$(DESTDIR)/bin
 
-all: $(SUBDIRS)
+export DESTDIR
+export BINDIR
 
-$(SUBDIRS):
-	$(MAKE) -C $@
+.PHONY: all
+all: $(addprefix build-,$(SUBDIRS))
+
+.PHONY: $(addprefix build-,$(SUBDIRS))
+$(addprefix build-,$(SUBDIRS)):
+	$(MAKE) -C $(@:build-%=%)
 
 .PHONY: clean
 clean: $(addprefix clean-,$(SUBDIRS))

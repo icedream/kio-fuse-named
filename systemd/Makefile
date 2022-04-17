@@ -3,6 +3,8 @@ INPUT_FILES=\
 
 FILES=$(basename $(INPUT_FILES))
 
+KIO_FUSE_NAMED_SCRIPT_NAME=kio-fuse-named
+
 all: $(FILES)
 
 %: %.in
